@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">Movie Zone</string>
+
+    <string name="movie_description">Movies move us like nothing else can, whether they’re scary, funny, dramatic, romantic or anywhere in-between. So many titles, so much to experience.</string>
+
+
 </resources>
