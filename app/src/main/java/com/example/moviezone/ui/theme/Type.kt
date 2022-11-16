@@ -71,6 +71,11 @@ val Typography = Typography(
     subtitle2 = TextStyle(
         fontFamily = PoppinsThinItalic,
         fontSize = 12.sp
-    )
+    ),
+
+    caption = TextStyle(
+        fontFamily = PoppinsMedium,
+        fontSize = 12.sp
+    ),
 
 )
