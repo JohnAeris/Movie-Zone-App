@@ -112,7 +112,10 @@ private fun MovieCard(movie: MovieData, onPosterClick: (String) -> Unit) {
 
     val context = LocalContext.current
 
-    Column(horizontalAlignment = Alignment.CenterHorizontally, verticalArrangement = Arrangement.spacedBy(5.dp)) {
+    Column(
+        horizontalAlignment = Alignment.CenterHorizontally,
+        verticalArrangement = Arrangement.spacedBy(5.dp)
+    ) {
         Card(
             modifier = Modifier
                 .wrapContentSize()
@@ -124,6 +127,7 @@ private fun MovieCard(movie: MovieData, onPosterClick: (String) -> Unit) {
                         .show()
                     onPosterClick(movie.id)
                 },
+            backgroundColor = MaterialTheme.colors.onBackground,
             shape = RoundedCornerShape(corner = CornerSize(4.dp)),
             elevation = 8.dp)
         {
