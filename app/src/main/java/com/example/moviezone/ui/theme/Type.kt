@@ -50,7 +50,7 @@ val Typography = Typography(
 
     h6 = TextStyle(
         fontFamily = PoppinsExtraLight,
-        fontSize = 16.sp
+        fontSize = 12.sp
     ),
 
     body1 = TextStyle(
@@ -76,6 +76,6 @@ val Typography = Typography(
     caption = TextStyle(
         fontFamily = PoppinsMedium,
         fontSize = 12.sp
-    ),
+    )
 
 )
