@@ -12,14 +12,21 @@ import androidx.compose.material.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
+import coil.ImageLoader
+import coil.compose.AsyncImage
+import coil.compose.AsyncImagePainter
+import coil.compose.SubcomposeAsyncImage
+import coil.compose.SubcomposeAsyncImageContent
 import com.example.moviezone.R
+import com.example.moviezone.model.MovieData
+import com.example.moviezone.model.getMovieData
 import com.example.moviezone.navigation.Screen
 
 
@@ -62,14 +69,7 @@ fun HomeScreen(navController: NavController) {
 
 @Composable
 fun MainContent(navController: NavController,
-                moviePosterList: List<Painter> =
-                    listOf(
-                        painterResource(id = R.drawable.jujutsu_poster),
-                        painterResource(id = R.drawable.bluelock_poster),
-                        painterResource(id = R.drawable.hunter_poster),
-                        painterResource(id = R.drawable.bleach_poster),
-                        painterResource(id = R.drawable.demon_slayer)
-                    )
+                moviePosterList: List<MovieData> = getMovieData()
 ) {
     Column(
         modifier = Modifier.padding(20.dp),
@@ -96,13 +96,10 @@ fun MainContent(navController: NavController,
                 style = MaterialTheme.typography.h3,
                 color = MaterialTheme.colors.primary)
 
-            val context = LocalContext.current
-
             LazyRow() {
-                items(items = moviePosterList) { item ->
-                    MovieCard(item) { movie ->
-                        navController.navigate(route = Screen.DetailScreen.name)
-                        //Toast.makeText(context, "Clicked", Toast.LENGTH_SHORT).show()
+                items(items = moviePosterList) {
+                    MovieCard(movie = it) { movie ->
+                        navController.navigate(route = Screen.DetailScreen.name + "/$movie")
                     }
                 }
             }
@@ -111,22 +108,45 @@ fun MainContent(navController: NavController,
 }
 
 @Composable
-private fun MovieCard(item: Painter, onPosterClick: (Painter) -> Unit) {
-    Card(
-        modifier = Modifier
-            .wrapContentSize()
-            .padding(start = 5.dp, end = 5.dp)
-            .size(100.dp, 140.dp)
-            .clickable {
-                onPosterClick(item)
-            },
-        shape = RoundedCornerShape(corner = CornerSize(4.dp)),
-        elevation = 8.dp)
-    {
-        Image(
-            painter = item,
-            contentDescription = "Movie Poster",
-            contentScale = ContentScale.FillBounds
+private fun MovieCard(movie: MovieData, onPosterClick: (String) -> Unit) {
+
+    val context = LocalContext.current
+
+    Column(horizontalAlignment = Alignment.CenterHorizontally, verticalArrangement = Arrangement.spacedBy(5.dp)) {
+        Card(
+            modifier = Modifier
+                .wrapContentSize()
+                .padding(start = 5.dp, end = 5.dp)
+                .size(100.dp, 140.dp)
+                .clickable {
+                    Toast
+                        .makeText(context, movie.title, Toast.LENGTH_SHORT)
+                        .show()
+                    onPosterClick(movie.id)
+                },
+            shape = RoundedCornerShape(corner = CornerSize(4.dp)),
+            elevation = 8.dp)
+        {
+
+            SubcomposeAsyncImage(
+                model = movie.poster,
+                contentDescription = "{${movie.title} Poster}",
+                contentScale = ContentScale.FillBounds
+            ) {
+                val state = painter.state
+                if (state is AsyncImagePainter.State.Loading || state is AsyncImagePainter.State.Error) {
+                    CircularProgressIndicator()
+                } else {
+                    SubcomposeAsyncImageContent()
+                }
+            }
+        }
+
+        Text(
+            text = movie.title,
+            style = MaterialTheme.typography.caption,
+            color = MaterialTheme.colors.primary
         )
+
     }
 }
