@@ -7,4 +7,11 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+
+    <!--My Color Palette-->
+    <color name="red_ryb">#FF220C</color>
+    <color name="english_vermillion">#D33E43</color>
+    <color name="burnished_brown">#9B7874</color>
+    <color name="old_lavender">#666370</color>
+    <color name="space_cadet">#1C1F33</color>
 </resources>
