@@ -335,8 +335,8 @@ fun getMovieData(): List<MovieData> {
             genre = listOf<String>(
                 "Drama", "Family", "Comedy"
             ),
-            firstDescription = "",
-            secondDescription = "",
+            firstDescription = "Separated from his daughter, a father with an intellectual disability must prove his innocence when he is jailed for the death of a commander's child.",
+            secondDescription = "A story about the love between a mentally-ill father and his lovingly adorable daughter. Wrongfully accused of murder and rape, Yong-Goo is imprisoned for murder, and builds friendships with the hardened criminals in his cell, who in return help him see his daughter again by smuggling her into the prison.",
             director = "Hwan-kyung Lee",
             starring = "Hwan-kyung Lee, Yoo Yeong-ah, Hwang-seong Kim",
             poster = "https://i.pinimg.com/564x/92/fc/c1/92fcc1816d75f99e8ea38cab3fb56bd3.jpg",
