@@ -13,18 +13,21 @@ private val DarkColorPalette = darkColors(
     background = space_cadet,
     surface = english_vermillion,
     primary = white,
-    primaryVariant = red_ryb,
+    primaryVariant = old_lavender,
     secondary = burnished_brown,
-    onBackground = white
+    secondaryVariant = white,
+    onSurface = black,
+
 )
 
 private val LightColorPalette = lightColors(
     background = white,
     surface = english_vermillion,
     primary = black,
-    primaryVariant = red_ryb,
+    primaryVariant = white,
     secondary = burnished_brown,
-    onBackground = old_lavender
+    secondaryVariant = space_cadet,
+    onSurface = white,
 
     /* Other default colors to override
     background = Color.White,
