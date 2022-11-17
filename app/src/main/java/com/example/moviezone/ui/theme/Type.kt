@@ -76,6 +76,11 @@ val Typography = Typography(
     caption = TextStyle(
         fontFamily = PoppinsMedium,
         fontSize = 12.sp
+    ),
+
+    button = TextStyle(
+        fontFamily = PoppinsMedium,
+        fontSize = 16.sp
     )
 
 )
