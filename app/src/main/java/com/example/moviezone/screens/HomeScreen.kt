@@ -78,7 +78,7 @@ fun MainContent(navController: NavController,
         modifier = Modifier.padding(20.dp)
     ) {
         item {
-            Column() {
+            Column {
                 Text(
                     text = "Movies",
                     style = MaterialTheme.typography.h2,
@@ -101,8 +101,8 @@ fun MainContent(navController: NavController,
                 style = MaterialTheme.typography.h3,
                 color = colorResource(id = R.color.red_ryb))
 
-            LazyRow() {
-                items(items = movieList.filter { movie -> movie.genre.contains("New Release")}) { it ->
+            LazyRow {
+                items(items = movieList.filter { movie -> movie.genre.contains("New Release")}) {
                     NewMovieCard(movie = it) { movie ->
                         navController.navigate(route = Screen.DetailScreen.name + "/$movie")
                     }
@@ -116,8 +116,8 @@ fun MainContent(navController: NavController,
                 style = MaterialTheme.typography.h3,
                 color = MaterialTheme.colors.primary)
 
-            LazyRow() {
-                items(items = movieList.filter { movie -> movie.genre.contains("Anime")}) { it ->
+            LazyRow {
+                items(items = movieList.filter { movie -> movie.genre.contains("Anime")}) {
                     MovieCard(movie = it) { movie ->
                         navController.navigate(route = Screen.DetailScreen.name + "/$movie")
                     }
@@ -131,8 +131,8 @@ fun MainContent(navController: NavController,
                 style = MaterialTheme.typography.h3,
                 color = MaterialTheme.colors.primary)
 
-            LazyRow() {
-                items(items = movieList.filter { movie -> movie.genre.contains("Adventure")}) { it ->
+            LazyRow {
+                items(items = movieList.filter { movie -> movie.genre.contains("Adventure")}) {
                     MovieCard(movie = it) { movie ->
                         navController.navigate(route = Screen.DetailScreen.name + "/$movie")
                     }
@@ -146,8 +146,8 @@ fun MainContent(navController: NavController,
                 style = MaterialTheme.typography.h3,
                 color = MaterialTheme.colors.primary)
 
-            LazyRow() {
-                items(items = movieList.filter { movie -> movie.genre.contains("Comedy")}) { it ->
+            LazyRow {
+                items(items = movieList.filter { movie -> movie.genre.contains("Comedy")}) {
                     MovieCard(movie = it) { movie ->
                         navController.navigate(route = Screen.DetailScreen.name + "/$movie")
                     }
@@ -161,8 +161,8 @@ fun MainContent(navController: NavController,
                 style = MaterialTheme.typography.h3,
                 color = MaterialTheme.colors.primary)
 
-            LazyRow() {
-                items(items = movieList.filter { movie -> movie.genre.contains("Action")}) { it ->
+            LazyRow {
+                items(items = movieList.filter { movie -> movie.genre.contains("Action")}) {
                     MovieCard(movie = it) { movie ->
                         navController.navigate(route = Screen.DetailScreen.name + "/$movie")
                     }
@@ -176,8 +176,8 @@ fun MainContent(navController: NavController,
                 style = MaterialTheme.typography.h3,
                 color = MaterialTheme.colors.primary)
 
-            LazyRow() {
-                items(items = movieList.filter { movie -> movie.genre.contains("Thriller")}) { it ->
+            LazyRow {
+                items(items = movieList.filter { movie -> movie.genre.contains("Thriller")}) {
                     MovieCard(movie = it) { movie ->
                         navController.navigate(route = Screen.DetailScreen.name + "/$movie")
                     }
@@ -191,8 +191,8 @@ fun MainContent(navController: NavController,
                 style = MaterialTheme.typography.h3,
                 color = MaterialTheme.colors.primary)
 
-            LazyRow() {
-                items(items = movieList.filter { movie -> movie.genre.contains("Drama")}) { it ->
+            LazyRow {
+                items(items = movieList.filter { movie -> movie.genre.contains("Drama")}) {
                     MovieCard(movie = it) { movie ->
                         navController.navigate(route = Screen.DetailScreen.name + "/$movie")
                     }
@@ -268,7 +268,7 @@ private fun NewMovieCard(movie: MovieData, onPosterClick: (String) -> Unit) {
         verticalArrangement = Arrangement.spacedBy(5.dp),
         modifier = Modifier.size(width = 100.dp, height = 200.dp)
     ) {
-        Box() {
+        Box {
             Card(
                 modifier = Modifier
                     .wrapContentSize()

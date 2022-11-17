@@ -135,7 +135,7 @@ fun DetailScreen(navController: NavController, movieId: String?) {
                          }
                      }
 
-                    Box() {
+                    Box {
                         Divider(color = colorResource(id = R.color.old_lavender), thickness = 4.dp)
                         Divider(color = colorResource(id = R.color.red_ryb), thickness = 4.dp, modifier = Modifier.width(10.dp))
                     }
@@ -286,13 +286,13 @@ fun DetailScreen(navController: NavController, movieId: String?) {
                         elevation = 4.dp
                     ) {
                         Column(modifier = Modifier.padding(5.dp), horizontalAlignment = Alignment.CenterHorizontally) {
-                            Column() {
+                            Column {
                                 Text(text = movie.firstDescription, style = MaterialTheme.typography.body1, color = MaterialTheme.colors.primary)
                                 
                                 Spacer(modifier = Modifier.height(5.dp))
                                 
                                 AnimatedVisibility(visible = isReadMore) {
-                                    Column() {
+                                    Column {
                                         Text(text = movie.secondDescription, style = MaterialTheme.typography.body1, color = MaterialTheme.colors.primary)
 
                                         Spacer(modifier = Modifier.height(10.dp))

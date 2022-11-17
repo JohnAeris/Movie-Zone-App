@@ -1,7 +1,5 @@
 package com.example.moviezone.navigation
 
-import android.widget.Toast
-
 enum class Screen {
     HomeScreen,
     DetailScreen;
