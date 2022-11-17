@@ -35,13 +35,14 @@ import com.example.moviezone.model.getMovieData
 @Composable
 fun DetailScreen(navController: NavController, movieId: String?) {
 
+    //Initializing variables
     val fetchMovie = getMovieData().filter { movie ->
         movie.id == movieId
     }
-
     val movie = fetchMovie.first()
 
     Scaffold(
+        //Top App Bar
         topBar = {
             TopAppBar(
                 backgroundColor = MaterialTheme.colors.surface,
@@ -74,6 +75,8 @@ fun DetailScreen(navController: NavController, movieId: String?) {
             }
         }
     ) {
+
+        //Movie Details User Interface
         Surface(modifier = Modifier.fillMaxSize(), color = MaterialTheme.colors.background) {
 
             val context = LocalContext.current
@@ -82,9 +85,9 @@ fun DetailScreen(navController: NavController, movieId: String?) {
             }
 
             LazyColumn {
-
+                //Movie Image
                 item {
-                     Box(contentAlignment = Alignment.Center) {
+                    Box(contentAlignment = Alignment.Center) {
                          Card(
                              backgroundColor = MaterialTheme.colors.onBackground,
                              shape = RectangleShape,
@@ -131,15 +134,14 @@ fun DetailScreen(navController: NavController, movieId: String?) {
                              )
                          }
                      }
-                 }
 
-                item {
                     Box() {
                         Divider(color = colorResource(id = R.color.old_lavender), thickness = 4.dp)
                         Divider(color = colorResource(id = R.color.red_ryb), thickness = 4.dp, modifier = Modifier.width(10.dp))
                     }
-                }
+                 }
 
+                //Movie Title, Year, Maturity Rating, Time, Type
                 item {
                     Column(modifier = Modifier.padding(start = 10.dp)) {
                         Text(
@@ -191,11 +193,25 @@ fun DetailScreen(navController: NavController, movieId: String?) {
                                 style = MaterialTheme.typography.h6,
                                 color = MaterialTheme.colors.primary
                             )
+
+                            Divider(
+                                Modifier
+                                    .width(0.5.dp)
+                                    .height(15.dp),
+                                thickness = 0.5.dp,
+                                color = MaterialTheme.colors.primary)
+
+                            Text(
+                                text = movie.type,
+                                style = MaterialTheme.typography.h6,
+                                color = MaterialTheme.colors.primary
+                            )
                         }
 
                     }
                 }
 
+                //Genre
                 item {
                     Divider(
                         thickness = 1.dp,
@@ -207,8 +223,59 @@ fun DetailScreen(navController: NavController, movieId: String?) {
                         ),
                         color = colorResource(id = R.color.gainsboro)
                     )
+
+                    Column(modifier = Modifier.padding(start = 15.dp, end = 15.dp)) {
+                        Row(verticalAlignment = Alignment.CenterVertically) {
+                            Text(
+                                text = "Genre: ",
+                                style = MaterialTheme.typography.h4,
+                                fontSize = 12.sp,
+                                color = MaterialTheme.colors.primary
+                            )
+
+                            for (i in movie.genre) {
+                                Card(
+                                    modifier = Modifier
+                                        .padding(3.dp)
+                                        .wrapContentSize(),
+                                    backgroundColor = MaterialTheme.colors.secondaryVariant
+                                ) {
+                                    Text(
+                                        text = i,
+                                        fontSize = 10.sp,
+                                        style = MaterialTheme.typography.body2,
+                                        color = MaterialTheme.colors.onSurface,
+                                        modifier = Modifier.padding(start = 3.dp, end = 3.dp)
+                                    )
+                                }
+                            }
+                        }
+                    }
                 }
 
+                //Play and Download Button
+                item {
+                    Spacer(modifier = Modifier.height(5.dp))
+
+                    Column(verticalArrangement = Arrangement.spacedBy(5.dp), modifier = Modifier.padding(5.dp)) {
+                        FilledRectangleButton(label = "Play", icon = Icons.Default.PlayArrow, onClick = {
+                            Toast.makeText(context, "Play ${movie.title}", Toast.LENGTH_SHORT).show()
+                        })
+
+                        val downloadIcon = if (isSystemInDarkTheme()) {
+                            painterResource(id = R.drawable.download_dark_theme_ic)
+                        } else {
+                            painterResource(id = R.drawable.download_light_theme_ic)
+                        }
+
+                        OutlinedRectangleButton(label = "Download", icon = downloadIcon, onClick = {
+                            Toast.makeText(context, "Downloading ${movie.title}", Toast.LENGTH_SHORT).show()
+                        })
+
+                    }
+                }
+
+                //Movie Plot, Casts, Director
                 item {
                     Card(
                         modifier = Modifier
@@ -268,34 +335,14 @@ fun DetailScreen(navController: NavController, movieId: String?) {
 
                                 Text(
                                     text = "Read more",
-                                    style = MaterialTheme.typography.h6,
+                                    style = MaterialTheme.typography.h2,
+                                    fontSize = 12.sp,
                                     color = MaterialTheme.colors.primary
                                 )
 
                             }
 
                         }
-
-                    }
-                }
-
-                item {
-                    Spacer(modifier = Modifier.height(5.dp))
-
-                    Column(verticalArrangement = Arrangement.spacedBy(5.dp), modifier = Modifier.padding(5.dp)) {
-                        FilledRectangleButton(label = "Play", icon = Icons.Default.PlayArrow, onClick = {
-                            Toast.makeText(context, "Play ${movie.title}", Toast.LENGTH_SHORT).show()
-                        })
-
-                        val downloadIcon = if (isSystemInDarkTheme()) {
-                            painterResource(id = R.drawable.download_dark_theme_ic)
-                        } else {
-                            painterResource(id = R.drawable.download_light_theme_ic)
-                        }
-
-                        OutlinedRectangleButton(label = "Download", icon = downloadIcon, onClick = {
-                            Toast.makeText(context, "Downloading ${movie.title}", Toast.LENGTH_SHORT).show()
-                        })
 
                     }
                 }
