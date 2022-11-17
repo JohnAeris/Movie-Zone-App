@@ -127,7 +127,7 @@ private fun MovieCard(movie: MovieData, onPosterClick: (String) -> Unit) {
                         .show()
                     onPosterClick(movie.id)
                 },
-            backgroundColor = MaterialTheme.colors.onBackground,
+            backgroundColor = MaterialTheme.colors.primaryVariant,
             shape = RoundedCornerShape(corner = CornerSize(4.dp)),
             elevation = 8.dp)
         {
