@@ -4,7 +4,7 @@
 <p>MovieZone is a simple application that contains collection of movies with different genres. The data that was used in the application was gathered 
   and collected from the internet. Moreover, coil library was also utilized to load images from the internet. It is much more quickly since it has a 
   variety of optimizations, including memory, disk caching, bitmap reuse, and downspacing the image in memory, which makes it faster than other 
-  image loading libraries. Jetpack compose was used to build the native user interface of the application. It displays the list of movies with its genre, title,
+  image loading libraries. Jetpack compose was used to build the user interface of the application. It displays the list of movies with its genre, title,
   director, and other details. It was also created with light and dark theme.</p>
 
 <h3>FEATURES</h3>
