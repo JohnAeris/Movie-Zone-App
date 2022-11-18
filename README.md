@@ -24,7 +24,7 @@
   <li>Maturity Rating</li>
   <li>Time</li>
   <li>Genre</li>
-  <li>First Descriptionli>
+  <li>First Description<li>
   <li>Second Description</li>
   <li>Director</li>
   <li>Starring</li>
